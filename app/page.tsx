@@ -1,11 +1,15 @@
+import { headers } from "next/headers";
 import { Hero } from "@/components/Hero";
 import { Experience } from "@/components/Experience";
 import { BlogSnippet } from "@/components/BlogSnippet";
 
-export default function Home() {
+export default async function Home() {
+  const headerList = await headers();
+  const city = headerList.get("x-user-city") || "the world";
+
   return (
     <div className="flex flex-col gap-4">
-      <Hero />
+      <Hero location={city} />
       <Experience />
       <BlogSnippet />
       

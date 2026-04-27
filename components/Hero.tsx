@@ -4,10 +4,15 @@ import { motion } from "framer-motion";
 import { MessageCircle, Code, Briefcase, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export const Hero = () => {
+export const Hero = ({ location = "the world" }: { location?: string }) => {
   const [spotifyData, setSpotifyData] = useState<any>(null);
+  const [greeting, setGreeting] = useState("");
 
   useEffect(() => {
+    const hours = new Date().getHours();
+    const timeGreeting = hours < 12 ? "Good morning" : hours < 17 ? "Good afternoon" : "Good evening";
+    setGreeting(timeGreeting);
+
     const fetchSpotify = async () => {
       try {
         const res = await fetch("/api/now-playing");
@@ -31,6 +36,9 @@ export const Hero = () => {
         transition={{ duration: 0.5 }}
       >
         <h1 className="text-4xl font-bold tracking-tight mb-2">Vangapandu Lokeswara Karthik</h1>
+        <p className="text-sm font-medium text-muted-foreground mb-6">
+          {greeting} from {location}! ☕
+        </p>
         <p className="text-lg text-muted-foreground mb-6">
           Engineer · Builder · Creative
         </p>
