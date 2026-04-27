@@ -64,7 +64,7 @@ export const Hero = () => {
               >
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                 <span className="truncate max-w-[150px]">
-                  {spotifyData.title} - {spotifyData.artist}
+                  On Repeat: {spotifyData.title}
                 </span>
               </a>
             ) : (
