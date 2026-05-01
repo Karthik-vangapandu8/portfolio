@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const { geo } = request;
+  const geo = (request as any).geo;
   const city = geo?.city || 'the world';
   const country = geo?.country || '';
 
