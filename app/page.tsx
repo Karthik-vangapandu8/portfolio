@@ -10,7 +10,16 @@ export default async function Home() {
   return (
     <div className="flex flex-col gap-4">
       <Hero location={city} />
-      <Experience />
+      <div className="relative group">
+        <div className="blur-md pointer-events-none select-none opacity-50 grayscale transition-all duration-500 group-hover:blur-sm">
+          <Experience />
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+          <div className="px-4 py-2 bg-background/80 backdrop-blur-md border rounded-full text-xs font-semibold tracking-widest uppercase text-muted-foreground shadow-sm">
+            Coming Soon
+          </div>
+        </div>
+      </div>
       <BlogSnippet />
       
       <section className="container-narrow py-12">
