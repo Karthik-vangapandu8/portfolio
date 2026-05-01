@@ -6,16 +6,18 @@ export function middleware(request: NextRequest) {
   const city = geo?.city || 'the world';
   const country = geo?.country || '';
 
-  const response = NextResponse.next();
-  
-  // Set headers so our app can read the location info
-  response.headers.set('x-user-city', city);
-  response.headers.set('x-user-country', country);
-  
-  return response;
+  // To pass headers to the page components, we must set them on the REQUEST
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-user-city', city);
+  requestHeaders.set('x-user-country', country);
+
+  return NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
 }
 
-// Only run middleware on the home page to save performance
 export const config = {
   matcher: '/',
 };

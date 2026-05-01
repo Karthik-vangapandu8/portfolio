@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle, Code, Briefcase, Mail } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export const Hero = ({ location = "the world" }: { location?: string }) => {
@@ -35,10 +36,27 @@ export const Hero = ({ location = "the world" }: { location?: string }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl font-bold tracking-tight mb-2">Vangapandu Lokeswara Karthik</h1>
-        <p className="text-sm font-medium text-muted-foreground mb-6">
-          {greeting} from {location}! ☕
-        </p>
+        <div className="flex flex-col md:flex-row items-center md:items-center gap-6 mb-8 text-center md:text-left">
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 rounded-full blur-md opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+            <Image 
+              src="/icons/blog1.png" 
+              alt="Vangapandu Lokeswara Karthik" 
+              width={96} 
+              height={96} 
+              className="relative rounded-full object-cover border-4 border-background shadow-xl"
+              priority
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+              Vangapandu Lokeswara Karthik
+            </h1>
+            <p className="text-sm sm:text-base font-medium text-muted-foreground">
+              {greeting} from {location}! ☕
+            </p>
+          </div>
+        </div>
         <p className="text-lg text-muted-foreground mb-6">
           Engineer · Builder · Creative
         </p>
