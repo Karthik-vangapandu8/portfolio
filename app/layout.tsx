@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
 import { CustomCursor } from "@/components/CustomCursor";
+import { PromotedAd } from "@/components/PromotedAd";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
         >
           <CustomCursor />
           <Navbar />
+          <PromotedAd />
           <main className="flex-1 pt-20 pb-10">
             {children}
           </main>

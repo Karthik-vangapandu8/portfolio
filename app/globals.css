@@ -68,3 +68,51 @@
 .card-minimal:hover {
   background-color: rgba(244, 244, 245, 0.5);
 }
+
+.prose-custom {
+  @apply text-foreground/90 leading-relaxed;
+}
+
+.prose-custom p {
+  @apply mb-6 text-[1.05rem];
+}
+
+.prose-custom h2 {
+  @apply text-2xl font-bold mt-12 mb-6 tracking-tight;
+}
+
+.prose-custom h3 {
+  @apply text-xl font-semibold mt-8 mb-4 tracking-tight;
+}
+
+.prose-custom pre {
+  @apply my-8 p-6 rounded-2xl bg-zinc-950 text-zinc-100 overflow-x-auto border border-zinc-800 shadow-xl;
+}
+
+.prose-custom code {
+  @apply font-mono text-sm px-1.5 py-0.5 rounded bg-muted border font-medium;
+}
+
+.prose-custom pre code {
+  @apply p-0 bg-transparent border-none;
+}
+
+.prose-custom ul {
+  @apply list-disc pl-6 mb-6 space-y-2;
+}
+
+.prose-custom ol {
+  @apply list-decimal pl-6 mb-6 space-y-2;
+}
+
+.prose-custom blockquote {
+  @apply border-l-4 border-primary/40 pl-6 italic my-8 text-muted-foreground;
+}
+
+.prose-custom img {
+  @apply rounded-2xl border my-10 shadow-lg mx-auto;
+}
+
+.prose-custom a {
+  @apply text-primary font-medium underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all;
+}

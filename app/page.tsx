@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import { Hero } from "@/components/Hero";
 import { Experience } from "@/components/Experience";
 import { BlogSnippet } from "@/components/BlogSnippet";
+import { InlineAd } from "@/components/PromotedAd";
 
 export default async function Home() {
   const headerList = await headers();
@@ -21,6 +22,7 @@ export default async function Home() {
         </div>
       </div>
       <BlogSnippet />
+      <InlineAd />
       
       <section className="container-narrow py-12">
         <h2 className="section-title">Development</h2>
