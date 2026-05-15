@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Github, Calendar } from "lucide-react";
+import { ArrowLeft, Code, Calendar } from "lucide-react";
 import { getPostBySlug } from "@/lib/api";
 import { BlogArticle } from "@/components/BlogArticle";
 import { PromotedAd } from "@/components/PromotedAd";
@@ -87,7 +87,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
               >
-                <Github className="w-4 h-4" />
+                <Code className="w-4 h-4" />
                 View Source
               </a>
             )}

@@ -70,7 +70,9 @@
 }
 
 .prose-custom {
-  @apply text-foreground/90 leading-relaxed;
+  color: var(--foreground);
+  opacity: 0.9;
+  line-height: 1.625;
 }
 
 .prose-custom p {
