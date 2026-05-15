@@ -2,6 +2,9 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8001/a
 
 export async function getPosts() {
   const response = await fetch(`${API_BASE_URL}/posts/`, {
+    headers: {
+      "ngrok-skip-browser-warning": "true",
+    },
     next: { revalidate: 3600 }, // Cache for 1 hour
   });
   if (!response.ok) {
@@ -12,6 +15,9 @@ export async function getPosts() {
 
 export async function getPostBySlug(slug: string) {
   const response = await fetch(`${API_BASE_URL}/posts/${slug}/`, {
+    headers: {
+      "ngrok-skip-browser-warning": "true",
+    },
     next: { revalidate: 3600 },
   });
   if (!response.ok) {
