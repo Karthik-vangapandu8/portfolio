@@ -11,32 +11,38 @@ interface BlogPostProps {
 
 export async function generateMetadata({ params }: BlogPostProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  
+  try {
+    const post = await getPostBySlug(slug);
+    if (!post) {
+      return { title: "Post Not Found | Karthik" };
+    }
 
-  if (!post) {
     return {
-      title: "Post Not Found | Karthik",
+      title: `${post.title} | Karthik`,
+      description: post.meta_description || post.excerpt || `Read ${post.title} by Karthik`,
+      openGraph: {
+        title: post.title,
+        description: post.meta_description || post.excerpt,
+        type: "article",
+        publishedTime: post.published_at,
+        authors: ["Karthik"],
+        images: post.featured_image ? [post.featured_image] : [],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.title,
+        description: post.meta_description || post.excerpt,
+        images: post.featured_image ? [post.featured_image] : [],
+      },
+    };
+  } catch (e) {
+    console.error("Metadata Fetch Error:", e);
+    return {
+      title: "API Error | Karthik",
+      description: "Could not fetch post metadata."
     };
   }
-
-  return {
-    title: `${post.title} | Karthik`,
-    description: post.meta_description || post.excerpt || `Read ${post.title} by Karthik`,
-    openGraph: {
-      title: post.title,
-      description: post.meta_description || post.excerpt,
-      type: "article",
-      publishedTime: post.published_at,
-      authors: ["Karthik"],
-      images: post.featured_image ? [post.featured_image] : [],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.meta_description || post.excerpt,
-      images: post.featured_image ? [post.featured_image] : [],
-    },
-  };
 }
 
 export default async function BlogPost({ params }: BlogPostProps) {
