@@ -41,7 +41,31 @@ export async function generateMetadata({ params }: BlogPostProps): Promise<Metad
 
 export default async function BlogPost({ params }: BlogPostProps) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  
+  let post = null;
+  let errorMsg = null;
+
+  try {
+    post = await getPostBySlug(slug);
+  } catch (e: any) {
+    console.error("Fetch Error:", e);
+    errorMsg = e.message || "Unknown error occurred while fetching the post.";
+  }
+
+  if (errorMsg) {
+    return (
+      <div className="container-narrow py-20 text-center">
+        <h1 className="text-2xl font-bold mb-4 text-red-500">API Connection Error</h1>
+        <p className="text-muted-foreground mb-8">
+          The frontend couldn't talk to your backend. <br />
+          <code className="bg-muted px-2 py-1 rounded mt-2 block text-xs">{errorMsg}</code>
+        </p>
+        <Link href="/blog" className="text-primary hover:underline">
+          Back to blog
+        </Link>
+      </div>
+    );
+  }
 
   if (!post) {
     return (
