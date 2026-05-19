@@ -1,27 +1,120 @@
 ---
 title: "Day 1: The 'Warehouse Tunnel' Hack"
 slug: "day-1-the-warehouse-tunnel-hack"
-excerpt: "How I exposed my local backend to the world in 5 minutes using Ngrok."
+excerpt: "How I routed a local Django server to Vercel and survived the CORS preflight bloodbath."
 published_at: "2026-05-15T07:49:15Z"
-meta_title: "Day 1: Using Ngrok for Building in Public"
-meta_description: "A quick hack to host your backend locally while keeping your frontend live on Vercel."
+meta_title: "Day 1: The 'Warehouse Tunnel' Hack | Karthik Kodes"
+meta_description: "An in-depth step-by-step guide to hosting your Django backend locally via Ngrok while keeping Next.js Vercel frontend active."
 github_url: "https://github.com/Karthik-vangapandu8/portfolio"
 ---
 
-## The Problem
+## The Architecture: Cloud Storefront, Local Warehouse
 
-I had my frontend live on Vercel, but my backend was stuck on my local machine. It was like having a beautiful storefront in the city center while my warehouse was locked in my house 100 miles away. The key? My laptop's IP address, which changes every time I restart my router.
+Here was the challenge: My Next.js frontend was live on Vercel's global CDN edge network. However, my Django backend database was hosted on my laptop inside my home workspace. 
 
-## The Solution: Tunneling
+It was like having a beautiful storefront in the city center while my warehouse was locked in my basement 100 miles away.
 
-Instead of rushing to buy a VPS and spending 3 hours on a "bloodbath" server migration, I used **Ngrok**. Ngrok creates a secure tunnel from the public internet directly to a port on my local machine.
+The core problem? **IP Rotations.** Every time I restart my local router, my laptop's public IP address changes. Hardcoding local IPs was out of the question, and buying a VPS immediately would have killed my development velocity. 
+
+So, I built a tunnel.
+
+```
+[Vercel Frontend] ──(HTTPS)──> [Ngrok Tunnel Edge] ──(Secure Tunnel)──> [Local Laptop:8001]
+```
+
+---
+
+## Step 1: Establishing the Secure Bridge
+
+Instead of setting up static routes or firewall policies, I used **Ngrok** to expose port `8001` (where my Django server runs) to the public internet securely:
 
 ```bash
 ngrok http 8001
 ```
 
-## Why this matters
+Ngrok immediately spun up a forwarding URL:
+```text
+Forwarding  https://3990-2a09-bac1-3680-ba8-00-176-79.ngrok-free.app -> http://localhost:8001
+```
 
-Building in public isn't about having the perfect infrastructure on Day 1. It's about **velocity**. By using a tunnel, I was able to go live in 5 minutes and start sharing my progress with you all. Tomorrow, we'll talk about the real deal: Moving to a dedicated Linux server on DigitalOcean.
+Now, any fetch request sent to that HTTPS address routing through Ngrok’s edge would land directly on my laptop's local port.
 
-> "Don't let the lack of a server stop you from sharing your code."
+---
+
+## Step 2: The CORS Preflight Bloodbath
+
+When I first triggered the fetch from Vercel to my new tunnel, my browser console exploded with red warnings:
+
+```text
+Access to fetch at 'https://3990-...' from origin 'https://karthikkodes.vercel.app' 
+has been blocked by CORS policy: Response to preflight request doesn't pass access control check.
+```
+
+When a browser makes a cross-origin request (Vercel to Ngrok), it first sends an `OPTIONS` request (a **preflight request**) to check if the server permits the communication. 
+
+My Django backend was returning `403 Forbidden` on the preflight check. 
+
+### The Solution: Django Settings Autopsy
+
+To fix this, we needed to make three changes in `backend/core/settings.py`:
+
+1. **Middleware Priority**: In Django, middleware is executed sequentially. If security middleware runs before the CORS headers are attached, the preflight request gets rejected before CORS can declare it safe. I moved `CorsMiddleware` to the absolute **#1 position**:
+
+```python
+MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware", # MUST BE FIRST
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    # ...
+]
+```
+
+2. **Explicit CORS Whitelist**: Instead of generic settings, we explicitly opened the gates for preflights:
+
+```python
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = [
+    "DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT"
+]
+```
+
+---
+
+## Step 3: Bypassing the Ngrok Warning Interstitial
+
+Even after fixing CORS, Vercel was still crashing with a generic Next.js `fetch failed` error. 
+
+Why? Because Ngrok's free tier intercepts the very first browser request to a tunnel and serves an HTML warning page asking the visitor if they trust the owner:
+
+```text
+ERR_NGROK_3200: You are about to visit a tunnel endpoint...
+```
+
+Vercel's server-side rendering engine was trying to read JSON, but got this HTML warning page instead. Since `<DOCTYPE html>` isn't valid JSON, Next.js choked.
+
+### The Bypass Header Fix
+
+To bypass this check programmatically, we must inject a custom header (`ngrok-skip-browser-warning`) with any value into every single outbound fetch request on the frontend:
+
+```typescript
+export async function getPosts() {
+  const response = await fetch(`${API_BASE_URL}/posts/`, {
+    headers: {
+      "ngrok-skip-browser-warning": "true", // The magic key
+    },
+    next: { revalidate: 3600 },
+  });
+  return response.json();
+}
+```
+
+By adding this header, Ngrok skips the warning page entirely, serving raw Django API responses straight to Vercel.
+
+---
+
+## Autopsy Summary
+
+* **Ngrok** is a powerful velocity tool, but its warning page will break server-side API fetches unless bypassed.
+* **CORS Middleware order** in Django settings is critical. If it runs after security middleware, preflights will fail silently.
+* Don't let deployment friction block your startup launch. Wrap it in a tunnel, get feedback, and migrate to a permanent VPS on Day 3.

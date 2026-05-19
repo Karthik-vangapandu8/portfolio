@@ -3,7 +3,7 @@ import { Hero } from "@/components/Hero";
 import { InlineAd } from "@/components/PromotedAd";
 import { getPosts } from "@/lib/api";
 import Link from "next/link";
-import { Calendar, ArrowRight, Clock } from "lucide-react";
+import { Calendar, ArrowRight, Clock, Award } from "lucide-react";
 
 export const revalidate = 60; // Revalidate every minute
 
@@ -31,6 +31,36 @@ export default async function Home() {
   return (
     <div className="flex flex-col gap-6">
       <Hero location={city} />
+
+      {/* Featured Startup Journey Callout */}
+      <section className="container-narrow">
+        <Link href="/startup-journey" className="block group">
+          <div className="p-6 rounded-3xl border bg-gradient-to-r from-border/40 via-muted/30 to-border/40 hover:border-primary/30 transition-all duration-300 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-xl pointer-events-none group-hover:bg-primary/10 transition-colors" />
+            <div className="flex flex-col sm:flex-row gap-6 items-start">
+              <div className="p-3.5 bg-primary/5 rounded-2xl border border-primary/10 text-primary shrink-0 group-hover:scale-105 transition-transform duration-300">
+                <Award className="w-6 h-6" />
+              </div>
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-primary/70">Featured Backstory</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary/70" />
+                  <span className="text-[10px] text-muted-foreground">Ministry of Education Award</span>
+                </div>
+                <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                  13 Backlogs to World IP Day Innovation Award Winner 🏆
+                </h3>
+                <p className="text-sm text-muted-foreground font-light leading-relaxed">
+                  How ZOVX Labs overcame academic detentions, lack of support, and failed expectations to be recognized as Andhra Pradesh's Best Innovative Startup.
+                </p>
+                <div className="inline-flex items-center gap-1.5 text-xs text-primary font-semibold pt-2 group-hover:underline">
+                  Read the story <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </Link>
+      </section>
 
       <section className="container-narrow py-6">
         <div className="flex items-center justify-between border-b pb-4 mb-8">

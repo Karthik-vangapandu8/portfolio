@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import { Command } from "cmdk";
-import { Search, Home, Briefcase, FileText, Newspaper, Moon, Sun } from "lucide-react";
+import { Search, Home, Briefcase, FileText, Newspaper, Moon, Sun, Award } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export function CommandMenu() {
@@ -68,6 +68,12 @@ export function CommandMenu() {
                 className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-accent cursor-pointer text-sm"
               >
                 <Briefcase className="w-4 h-4" /> Work
+              </Command.Item>
+              <Command.Item
+                onSelect={() => runCommand(() => router.push("/startup-journey"))}
+                className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-accent cursor-pointer text-sm"
+              >
+                <Award className="w-4 h-4" /> Startup Journey
               </Command.Item>
               <Command.Item
                 onSelect={() => runCommand(() => router.push("/resume"))}
