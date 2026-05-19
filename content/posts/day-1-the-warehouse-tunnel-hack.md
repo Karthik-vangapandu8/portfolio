@@ -22,6 +22,9 @@ So, I built a tunnel.
 [Vercel Frontend] ──(HTTPS)──> [Ngrok Tunnel Edge] ──(Secure Tunnel)──> [Local Laptop:8001]
 ```
 
+> [!WARNING]
+> **Production Disclaimer:** This tunnel setup is a developer "cheat code" and temporary experiment for fast feedback. Exposing your local machine directly to the public internet lacks basic security controls, firewall protection, and scalability. Do **not** run live production databases or APIs over an Ngrok bridge. Use a dedicated VPS or serverless platform for production releases.
+
 ---
 
 ## Step 1: Establishing the Secure Bridge
@@ -117,4 +120,4 @@ By adding this header, Ngrok skips the warning page entirely, serving raw Django
 
 * **Ngrok** is a powerful velocity tool, but its warning page will break server-side API fetches unless bypassed.
 * **CORS Middleware order** in Django settings is critical. If it runs after security middleware, preflights will fail silently.
-* Don't let deployment friction block your startup launch. Wrap it in a tunnel, get feedback, and migrate to a permanent VPS on Day 3.
+* **Cheat Code Warning**: Use tunneling strictly for local prototyping. Avoid it for real production workloads. Move to a VPS once initial feedback is validated.
