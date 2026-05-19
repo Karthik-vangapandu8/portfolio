@@ -58,10 +58,10 @@ export const Hero = ({ location = "the world" }: { location?: string }) => {
           </div>
         </div>
         <p className="text-lg text-muted-foreground mb-6">
-          Engineer · Builder · Creative
+          Engineer · Builder · Writer
         </p>
         <p className="text-base text-muted-foreground max-w-xl leading-relaxed mb-8">
-          I'm a software engineer passionate about building high-performance web applications and tools that solve real-world problems. Love to experiment with new technologies and contribute to open source.
+          I build systems in public, break them, and write down the autopsies. Currently exploring backend architectures, network protocols, and web performance.
         </p>
 
         <div className="flex gap-4 items-center">

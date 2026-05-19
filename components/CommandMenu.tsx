@@ -70,12 +70,6 @@ export function CommandMenu() {
                 <Briefcase className="w-4 h-4" /> Work
               </Command.Item>
               <Command.Item
-                onSelect={() => runCommand(() => router.push("/blog"))}
-                className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-accent cursor-pointer text-sm"
-              >
-                <Newspaper className="w-4 h-4" /> Blog
-              </Command.Item>
-              <Command.Item
                 onSelect={() => runCommand(() => router.push("/resume"))}
                 className="flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-accent cursor-pointer text-sm"
               >

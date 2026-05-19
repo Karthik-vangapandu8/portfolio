@@ -11,9 +11,6 @@ import { CommandMenu } from "./CommandMenu";
 
 const navItems = [
   { name: "Home", path: "/" },
-  { name: "Work", path: "/work" },
-  { name: "Blog", path: "/blog" },
-  { name: "Resume", path: "/resume" },
 ];
 
 export default function Navbar() {
