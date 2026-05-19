@@ -4,6 +4,7 @@ import { InlineAd } from "@/components/PromotedAd";
 import { getPosts } from "@/lib/api";
 import Link from "next/link";
 import { Calendar, ArrowRight, Clock, Award } from "lucide-react";
+import { TechTerminal } from "@/components/TechTerminal";
 
 export const revalidate = 60; // Revalidate every minute
 
@@ -61,6 +62,9 @@ export default async function Home() {
           </div>
         </Link>
       </section>
+
+      {/* Interactive Tech Terminal */}
+      <TechTerminal />
 
       <section className="container-narrow py-6">
         <div className="flex items-center justify-between border-b pb-4 mb-8">
