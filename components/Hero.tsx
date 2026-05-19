@@ -69,23 +69,23 @@ export const Hero = ({ location = "the world" }: { location?: string }) => {
               href="https://github.com/Karthik-vangapandu8" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="px-3 py-1.5 hover:bg-accent rounded-lg transition-colors text-sm font-medium text-muted-foreground hover:text-foreground border border-transparent hover:border-border"
+              className="px-3 py-1.5 hover:bg-accent rounded-lg transition-colors text-sm font-mono text-muted-foreground hover:text-foreground border border-transparent hover:border-border"
             >
-              GitHub
+              /src
             </a>
             <a 
               href="https://linkedin.com/in/karthik-vangapandu" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="px-3 py-1.5 hover:bg-accent rounded-lg transition-colors text-sm font-medium text-muted-foreground hover:text-foreground border border-transparent hover:border-border"
+              className="px-3 py-1.5 hover:bg-accent rounded-lg transition-colors text-sm font-mono text-muted-foreground hover:text-foreground border border-transparent hover:border-border"
             >
-              LinkedIn
+              /connect
             </a>
             <a 
-              href="mailto:vangapandulokeswarakarthik@gmail.com" 
-              className="px-3 py-1.5 hover:bg-accent rounded-lg transition-colors text-sm font-medium text-muted-foreground hover:text-foreground border border-transparent hover:border-border"
+              href="mailto:pavanpandu33031@gmail.com" 
+              className="px-3 py-1.5 hover:bg-accent rounded-lg transition-colors text-sm font-mono text-muted-foreground hover:text-foreground border border-transparent hover:border-border"
             >
-              Email
+              /ping
             </a>
           </div>
           

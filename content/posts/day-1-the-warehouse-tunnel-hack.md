@@ -1,9 +1,9 @@
 ---
-title: "Day 1: The 'Warehouse Tunnel' Hack"
+title: "The 'Warehouse Tunnel' Hack"
 slug: "day-1-the-warehouse-tunnel-hack"
 excerpt: "How I routed a local Django server to Vercel and survived the CORS preflight bloodbath."
 published_at: "2026-05-15T07:49:15Z"
-meta_title: "Day 1: The 'Warehouse Tunnel' Hack | Karthik Kodes"
+meta_title: "The 'Warehouse Tunnel' Hack | Karthik Kodes"
 meta_description: "An in-depth step-by-step guide to hosting your Django backend locally via Ngrok while keeping Next.js Vercel frontend active."
 github_url: "https://github.com/Karthik-vangapandu8/portfolio"
 ---
