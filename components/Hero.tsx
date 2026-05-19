@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, Code, Briefcase, Mail } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -66,17 +65,27 @@ export const Hero = ({ location = "the world" }: { location?: string }) => {
 
         <div className="flex gap-4 items-center">
           <div className="flex gap-4 items-center">
-            <a href="#" className="p-2 hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-foreground">
-              <MessageCircle className="w-5 h-5" />
+            <a 
+              href="https://github.com/Karthik-vangapandu8" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-3 py-1.5 hover:bg-accent rounded-lg transition-colors text-sm font-medium text-muted-foreground hover:text-foreground border border-transparent hover:border-border"
+            >
+              GitHub
             </a>
-            <a href="#" className="p-2 hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-foreground">
-              <Code className="w-5 h-5" />
+            <a 
+              href="https://linkedin.com/in/karthik-vangapandu" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-3 py-1.5 hover:bg-accent rounded-lg transition-colors text-sm font-medium text-muted-foreground hover:text-foreground border border-transparent hover:border-border"
+            >
+              LinkedIn
             </a>
-            <a href="#" className="p-2 hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-foreground">
-              <Briefcase className="w-5 h-5" />
-            </a>
-            <a href="#" className="p-2 hover:bg-accent rounded-lg transition-colors text-muted-foreground hover:text-foreground">
-              <Mail className="w-5 h-5" />
+            <a 
+              href="mailto:vangapandulokeswarakarthik@gmail.com" 
+              className="px-3 py-1.5 hover:bg-accent rounded-lg transition-colors text-sm font-medium text-muted-foreground hover:text-foreground border border-transparent hover:border-border"
+            >
+              Email
             </a>
           </div>
           

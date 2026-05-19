@@ -69,7 +69,7 @@ export default async function Home() {
       <section className="container-narrow py-6">
         <div className="flex items-center justify-between border-b pb-4 mb-8">
           <h2 className="text-xl font-bold tracking-tight text-foreground/80">
-            Logs & Autopsies
+            Engineering Logs
           </h2>
           <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
             {posts.length} Article{posts.length !== 1 ? 's' : ''}
