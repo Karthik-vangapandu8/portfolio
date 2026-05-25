@@ -4,7 +4,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar";
 import { CustomCursor } from "@/components/CustomCursor";
-import { PromotedAd } from "@/components/PromotedAd";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -29,17 +28,9 @@ export default function RootLayout({
         >
           <CustomCursor />
           <Navbar />
-          <PromotedAd />
           <main className="flex-1 pt-20 pb-10">
             {children}
           </main>
-          <footer className="container-narrow py-10 border-t text-sm text-muted-foreground flex justify-between items-center">
-            <p>© {new Date().getFullYear()} Karthik</p>
-            <div className="flex gap-4">
-              <a href="https://x.com" className="hover:text-foreground">X</a>
-              <a href="https://github.com" className="hover:text-foreground">GitHub</a>
-            </div>
-          </footer>
         </ThemeProvider>
       </body>
     </html>

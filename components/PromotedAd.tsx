@@ -99,29 +99,27 @@ export function InlineAd() {
   const Icon = ad.type === 'achievement' ? Trophy : ad.type === 'quote' ? Quote : Sparkles;
 
   return (
-    <div className="lg:hidden my-8 px-4">
-      <div className="p-4 rounded-xl border bg-accent/30 backdrop-blur-sm relative overflow-hidden">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">
-            Promoted
-          </span>
+    <div className="p-4 rounded-[20px] bg-accent/30 backdrop-blur-sm relative overflow-hidden">
+      <div className="flex items-center gap-2 mb-2">
+        <span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground/60">
+          Promoted
+        </span>
+      </div>
+      <div className="flex gap-4 items-start">
+         <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
+          <Icon className="w-4 h-4" />
         </div>
-        <div className="flex gap-4 items-start">
-           <div className="p-2 rounded-lg bg-primary/10 text-primary shrink-0">
-            <Icon className="w-4 h-4" />
-          </div>
-          <div className="flex-1">
-            {ad.image && (
-              <div className="relative w-full h-32 rounded-lg overflow-hidden mb-3">
-                <img src={ad.image} alt={ad.title} className="w-full h-full object-cover" />
-              </div>
-            )}
-            <h4 className="text-sm font-semibold mb-1">{ad.title}</h4>
-            <p className="text-xs text-muted-foreground mb-3">{ad.description}</p>
-            <a href={ad.link} className="text-xs font-semibold text-primary flex items-center gap-1">
-              {ad.cta} <ExternalLink className="w-3 h-3" />
-            </a>
-          </div>
+        <div className="flex-1">
+          {ad.image && (
+            <div className="relative w-full h-32 rounded-lg overflow-hidden mb-3">
+              <img src={ad.image} alt={ad.title} className="w-full h-full object-cover" />
+            </div>
+          )}
+          <h4 className="text-sm font-semibold mb-1">{ad.title}</h4>
+          <p className="text-xs text-muted-foreground mb-3">{ad.description}</p>
+          <a href={ad.link} className="text-xs font-semibold text-primary flex items-center gap-1">
+            {ad.cta} <ExternalLink className="w-3 h-3" />
+          </a>
         </div>
       </div>
     </div>

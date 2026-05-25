@@ -186,22 +186,23 @@ export function TechTerminal() {
       <div className="crt-container crt-flicker rounded-2xl border-[#225522] flex flex-col min-h-[380px] overflow-hidden shadow-2xl">
         {/* Terminal Header */}
         <div className="bg-[#0b0e0b] border-b border-[#225522] px-4 py-3 flex items-center justify-between select-none">
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 shrink-0">
             <div className="w-3 h-3 rounded-full bg-red-500/80 border border-red-600/30" />
             <div className="w-3 h-3 rounded-full bg-yellow-500/80 border border-yellow-600/30" />
             <div className="w-3 h-3 rounded-full bg-green-500/80 border border-green-600/30" />
           </div>
-          <span className="text-xs font-mono text-[#33ff33]/50">guest@karthikkodes:~</span>
-          <div className="w-12" /> {/* Spacer */}
+          <span className="text-xs font-mono text-[#33ff33]/50 truncate px-2">guest@karthikkodes:~</span>
+          <div className="w-12 shrink-0 sm:block hidden" /> {/* Spacer */}
         </div>
 
         {/* Terminal Body */}
-        <div className="flex-1 p-6 font-mono text-xs sm:text-sm overflow-y-auto space-y-4 max-h-[420px] bg-[#050705]">
+        <div className="flex-1 p-4 sm:p-6 font-mono text-xs sm:text-sm overflow-y-auto space-y-4 max-h-[420px] bg-[#050705]">
           {history.map((entry, index) => (
             <div key={index} className="space-y-2">
               {entry.command !== "system-check" && (
                 <div className="text-[#33ff33] flex items-center gap-2">
-                  <span>guest@karthikkodes:~$</span>
+                  <span className="hidden sm:inline">guest@karthikkodes:~$</span>
+                  <span className="sm:hidden">~$</span>
                   <span>{entry.command}</span>
                 </div>
               )}
@@ -216,8 +217,9 @@ export function TechTerminal() {
         </div>
 
         {/* Terminal Input Line */}
-        <div className="bg-[#050705] px-6 py-3 border-t border-[#225522] flex items-center gap-2 text-xs sm:text-sm font-mono text-[#33ff33]">
-          <span>guest@karthikkodes:~$</span>
+        <div className="bg-[#050705] px-4 sm:px-6 py-3 border-t border-[#225522] flex items-center gap-2 text-xs sm:text-sm font-mono text-[#33ff33]">
+          <span className="hidden sm:inline">guest@karthikkodes:~$</span>
+          <span className="sm:hidden">~$</span>
           <input
             type="text"
             value={input}

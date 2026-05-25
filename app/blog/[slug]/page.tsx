@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowLeft, Code, Calendar } from "lucide-react";
 import { getPostBySlug } from "@/lib/api";
 import { BlogArticle } from "@/components/BlogArticle";
-import { PromotedAd } from "@/components/PromotedAd";
 
 interface BlogPostProps {
   params: Promise<{ slug: string }>;
@@ -66,8 +65,8 @@ export default async function BlogPost({ params }: BlogPostProps) {
           The frontend couldn't talk to your backend. <br />
           <code className="bg-muted px-2 py-1 rounded mt-2 block text-xs">{errorMsg}</code>
         </p>
-        <Link href="/blog" className="text-primary hover:underline">
-          Back to blog
+        <Link href="/" className="text-primary hover:underline">
+          Back to logs
         </Link>
       </div>
     );
@@ -77,8 +76,8 @@ export default async function BlogPost({ params }: BlogPostProps) {
     return (
       <div className="container-narrow py-20 text-center">
         <h1 className="text-2xl font-bold mb-4">Post not found</h1>
-        <Link href="/blog" className="text-primary hover:underline flex items-center justify-center gap-2">
-          <ArrowLeft className="w-4 h-4" /> Back to blog
+        <Link href="/" className="text-primary hover:underline flex items-center justify-center gap-2">
+          <ArrowLeft className="w-4 h-4" /> Back to logs
         </Link>
       </div>
     );
@@ -88,11 +87,11 @@ export default async function BlogPost({ params }: BlogPostProps) {
     <div className="flex flex-col gap-8 pb-20">
       <article className="container-narrow py-12">
         <Link 
-          href="/blog" 
+          href="/" 
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-12 transition-colors group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> 
-          Back to blog
+          Back to logs
         </Link>
         
         <header className="mb-12">
@@ -137,11 +136,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
         <BlogArticle content={post.content} />
       </article>
 
-      <div className="container-narrow">
-        <div className="p-1 bg-gradient-to-r from-border via-primary/20 to-border rounded-3xl">
-          <PromotedAd />
-        </div>
-      </div>
+
     </div>
   );
 }

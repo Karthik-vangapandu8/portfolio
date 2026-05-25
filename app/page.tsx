@@ -1,6 +1,5 @@
 import { headers } from "next/headers";
 import { Hero } from "@/components/Hero";
-import { InlineAd } from "@/components/PromotedAd";
 import { getPosts } from "@/lib/api";
 import Link from "next/link";
 import { Calendar, ArrowRight, Clock, Award } from "lucide-react";
@@ -88,7 +87,7 @@ export default async function Home() {
               const readingTime = getReadingTime(post.content);
               return (
                 <div key={post.slug} className="contents">
-                  <article className="group relative rounded-2xl border border-transparent hover:border-border hover:bg-muted/30 p-6 -mx-6 transition-all duration-300">
+                  <article className="group relative rounded-2xl border border-transparent hover:border-border hover:bg-muted/30 p-4 sm:p-6 -mx-4 sm:-mx-6 transition-all duration-300">
                     <Link href={`/blog/${post.slug}`} className="block">
                       <div className="flex flex-col gap-2">
                         <header className="flex items-center gap-4 text-xs text-muted-foreground mb-1">
@@ -118,14 +117,7 @@ export default async function Home() {
                     </Link>
                   </article>
 
-                  {/* Interleave native ad after the first post */}
-                  {index === 0 && (
-                    <div className="my-6">
-                      <div className="p-1 bg-gradient-to-r from-border via-primary/5 to-border rounded-3xl">
-                        <InlineAd />
-                      </div>
-                    </div>
-                  )}
+
                 </div>
               );
             })}

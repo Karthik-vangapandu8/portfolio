@@ -17,7 +17,7 @@ export default function StartupJourney() {
       </Link>
 
       {/* Hero Header Section */}
-      <header className="mb-16 text-center sm:text-left">
+      <header className="mb-8 md:mb-16 text-center sm:text-left">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 animate-pulse">
           <Award className="w-3.5 h-3.5" />
           Best Innovative Tech Startup
@@ -31,19 +31,19 @@ export default function StartupJourney() {
       </header>
 
       {/* Responsive Grid layout */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-start">
         {/* Award Image container */}
-        <div className="md:col-span-5 sticky top-24">
+        <div className="md:col-span-5 md:sticky md:top-24">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl overflow-hidden border bg-muted/40 shadow-xl group aspect-[3/4]"
+            className="rounded-3xl overflow-hidden border bg-muted/40 shadow-xl group aspect-auto md:aspect-[3/4] w-full"
           >
             <img
               src="/blog/images/day-2-award.jpg"
               alt="Karthik holding the World IP Day Innovation Award"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-auto md:h-full md:w-full md:object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </motion.div>
           
@@ -56,7 +56,7 @@ export default function StartupJourney() {
         {/* Narrative text block */}
         <div className="md:col-span-7 space-y-8 text-muted-foreground leading-relaxed text-base">
           {/* Glass Card 1 */}
-          <div className="p-6 rounded-2xl border bg-muted/10 backdrop-blur-md">
+          <div className="p-4 sm:p-6 rounded-2xl border bg-muted/10 backdrop-blur-md">
             <h3 className="text-foreground font-semibold flex items-center gap-2 mb-3">
               <ShieldAlert className="w-4 h-4 text-destructive" /> The Starting Point
             </h3>
@@ -79,7 +79,7 @@ export default function StartupJourney() {
           </div>
 
           {/* Glass Card 2 */}
-          <div className="p-6 rounded-2xl border bg-muted/10 backdrop-blur-md">
+          <div className="p-4 sm:p-6 rounded-2xl border bg-muted/10 backdrop-blur-md">
             <h3 className="text-foreground font-semibold flex items-center gap-2 mb-3">
               <Sparkles className="w-4 h-4 text-yellow-500" /> Rewriting Expectations
             </h3>
@@ -105,13 +105,13 @@ export default function StartupJourney() {
           </div>
 
           {/* Call to Action */}
-          <div className="p-6 rounded-3xl border bg-gradient-to-r from-border/50 via-primary/5 to-border/50 text-center flex flex-col items-center gap-4">
+          <div className="p-4 sm:p-6 rounded-3xl border bg-gradient-to-r from-border/50 via-primary/5 to-border/50 text-center flex flex-col items-center gap-4">
             <div>
               <h4 className="text-foreground font-bold">Follow ZOVX Labs Launch</h4>
               <p className="text-xs text-muted-foreground mt-1">Official launching on May 7th, 2025.</p>
             </div>
-            <a
-              href="https://linkedin.com/in/karthik-vangapandu"
+             <a
+              href="https://www.linkedin.com/in/vangapandu-karthik/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground font-semibold text-sm rounded-xl hover:opacity-90 transition-opacity"
