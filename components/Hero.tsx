@@ -145,14 +145,14 @@ export const Hero = ({ location = "the world" }: { location?: string }) => {
                 />
                 {!nameInput.trim() && (
                   <motion.div
-                    animate={{ y: [0, -4, 0] }}
+                    animate={{ y: [0, 4, 0] }}
                     transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                    className="absolute -top-10 left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 bg-[#ff3f55] text-white text-[10px] font-bold px-2.5 py-1 rounded-lg shadow-lg shadow-[#ff3f55]/30 whitespace-nowrap pointer-events-none select-none flex items-center gap-1 z-10"
+                    className="absolute top-8 left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 bg-[#ff3f55] text-white text-[10px] font-bold px-2.5 py-1 rounded-lg shadow-lg shadow-[#ff3f55]/30 whitespace-nowrap pointer-events-none select-none flex items-center gap-1 z-10"
                   >
                     <Sparkles className="w-2.5 h-2.5 animate-pulse" />
                     Type your name & press Enter!
-                    {/* Tooltip Caret */}
-                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 w-2 h-2 bg-[#ff3f55] rotate-45" />
+                    {/* Tooltip Caret (pointing upwards) */}
+                    <div className="absolute -top-1 left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 w-2 h-2 bg-[#ff3f55] rotate-45" />
                   </motion.div>
                 )}
               </div>
