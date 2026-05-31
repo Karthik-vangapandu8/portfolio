@@ -8,6 +8,7 @@ import { CustomCursor } from "@/components/CustomCursor";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://karthikkodes.vercel.app"),
   title: "Karthik | Developer",
   description: "Portfolio of Karthik - Software Engineer & Builder",
 };
