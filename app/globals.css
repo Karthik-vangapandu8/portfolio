@@ -5,6 +5,8 @@
   --color-primary: var(--primary);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
 }
 
 @layer base {

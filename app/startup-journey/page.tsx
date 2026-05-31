@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Award, Calendar, ExternalLink, ShieldAlert, Sparkles } from "lucide-react";
+import { ArrowLeft, Award, Calendar, ExternalLink, ShieldAlert, Sparkles, Info } from "lucide-react";
 import Link from "next/link";
 
 export default function StartupJourney() {
@@ -22,6 +22,18 @@ export default function StartupJourney() {
           <Award className="w-3.5 h-3.5" />
           Best Innovative Tech Startup
         </div>
+
+        {/* ZOVX Journey Archival Note */}
+        <div className="mb-8 p-4 rounded-2xl border border-muted/50 bg-muted/20 backdrop-blur-md text-left max-w-2xl mx-auto sm:mx-0 flex items-start gap-3">
+          <Info className="w-4.5 h-4.5 text-primary shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <h4 className="text-foreground font-semibold text-xs sm:text-sm tracking-wide uppercase">The ZOVX Journey Archive</h4>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              This space will serve as a log of the ZOVX Labs story—sharing our original architectural vision, the severe administrative hurdles we faced, and why we ultimately had to make the decision to shut down.
+            </p>
+          </div>
+        </div>
+
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6 bg-gradient-to-r from-foreground via-foreground/90 to-foreground/60 bg-clip-text text-transparent leading-tight">
           13 Backlogs to World IP Day Innovation Award
         </h1>
