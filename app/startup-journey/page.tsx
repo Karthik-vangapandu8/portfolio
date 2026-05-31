@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Award, Calendar, ExternalLink, ShieldAlert, Sparkles, Info } from "lucide-react";
+import { ArrowLeft, Award, Calendar, ShieldAlert, Sparkles, Info } from "lucide-react";
 import Link from "next/link";
 
 export default function StartupJourney() {
@@ -107,23 +107,6 @@ export default function StartupJourney() {
             <blockquote className="text-lg font-light text-foreground italic border-l-4 pl-4 border-primary">
               "Believe so boldly that even the universe has no choice but to align."
             </blockquote>
-          </div>
-
-          {/* Call to Action */}
-          <div className="p-4 sm:p-6 rounded-3xl border bg-gradient-to-r from-border/50 via-primary/5 to-border/50 text-center flex flex-col items-center gap-4">
-            <div>
-              <h4 className="text-foreground font-bold">Follow ZOVX Labs Launch</h4>
-              <p className="text-xs text-muted-foreground mt-1">Official launching on May 7th, 2025.</p>
-            </div>
-             <a
-              href="https://www.linkedin.com/in/vangapandu-karthik/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground font-semibold text-sm rounded-xl hover:opacity-90 transition-opacity"
-            >
-              Connect on LinkedIn
-              <ExternalLink className="w-4 h-4" />
-            </a>
           </div>
         </div>
       </div>
