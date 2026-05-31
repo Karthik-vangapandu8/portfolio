@@ -88,13 +88,6 @@ export default function StartupJourney() {
             </p>
           </div>
 
-          <div>
-            <h3 className="text-foreground font-semibold text-lg mb-3">Ready to Roar</h3>
-            <p>
-              The most exciting part? **ZOVX Labs has not even launched officially yet.** We go live on **May 7th, 2025**. Born in academic rejection, built in absolute silence, and now fully ready to scale.
-            </p>
-          </div>
-
           <div className="pt-6 border-t">
             <p className="text-sm font-semibold text-foreground mb-4">
               To everyone who feels boxed in by grades or systems:
