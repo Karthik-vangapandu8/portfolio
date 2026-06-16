@@ -122,18 +122,13 @@ export default async function BlogPost({ params }: BlogPostProps) {
             )}
           </div>
         </header>
-
-        {post.featured_image && (
-          <div className="mb-12 rounded-2xl overflow-hidden border bg-muted aspect-video relative">
-            <img 
-              src={post.featured_image} 
-              alt={post.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        )}
-
-        <BlogArticle content={post.content} />
+        <BlogArticle 
+          content={post.content} 
+          title={post.title}
+          excerpt={post.excerpt}
+          featuredImage={post.featured_image}
+          publishedAt={post.published_at}
+        />
       </article>
 
 

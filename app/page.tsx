@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { Hero } from "@/components/Hero";
 import { getPosts } from "@/lib/api";
 import Link from "next/link";
-import { Calendar, ArrowRight, Clock, Award } from "lucide-react";
+import { Calendar, ArrowRight, Clock, Award, Cpu } from "lucide-react";
 import { TechTerminal } from "@/components/TechTerminal";
 
 export const revalidate = 60; // Revalidate every minute
@@ -55,6 +55,36 @@ export default async function Home() {
                 </p>
                 <div className="inline-flex items-center gap-1.5 text-xs text-primary font-semibold pt-2 group-hover:underline">
                   Read the story <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </Link>
+      </section>
+
+      {/* Featured Moat Callout */}
+      <section className="container-narrow">
+        <Link href="/blog/building-data-detective-data-analyst-agent-ollama" className="block group">
+          <div className="p-6 rounded-3xl border bg-gradient-to-r from-border/40 via-muted/30 to-border/40 hover:border-violet-500/20 hover:shadow-[0_0_15px_rgba(139,92,246,0.05)] transition-all duration-300 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-violet-500/5 rounded-full blur-xl pointer-events-none group-hover:bg-violet-500/10 transition-colors" />
+            <div className="flex flex-col sm:flex-row gap-6 items-start">
+              <div className="p-3.5 bg-violet-500/5 rounded-2xl border border-violet-500/10 text-violet-500 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                <Cpu className="w-6 h-6" />
+              </div>
+              <div className="space-y-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-violet-500/70">My Moat</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-violet-500/70" />
+                  <span className="text-[10px] text-muted-foreground">No Heavy Frameworks</span>
+                </div>
+                <h3 className="text-lg font-bold text-foreground group-hover:text-violet-500 transition-colors">
+                  Building AI Agents from Scratch (No Frameworks) 🛠️
+                </h3>
+                <p className="text-sm text-muted-foreground font-light leading-relaxed">
+                  Why LangChain and LlamaIndex can be architectural quicksand for production systems. How I build custom, type-safe agent loops using raw Python, Pydantic, and Ollama.
+                </p>
+                <div className="inline-flex items-center gap-1.5 text-xs text-violet-500 font-semibold pt-2 group-hover:underline">
+                  Explore the Architecture <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </div>
               </div>
             </div>
